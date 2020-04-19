@@ -2,7 +2,24 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:waml.styles="clr-namespace:WamlDesign.Styles"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:waml.converters="clr-namespace:WamlDesign.Converters"
                     xmlns:waml="clr-namespace:WamlDesign">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="./Colors/WamlColor.Blue.xaml"/>
+        <ResourceDictionary Source="./Colors/WamlLightThemeColor.xaml"/>
+        <ResourceDictionary Source="Waml.Brushes.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" po:Freeze="True"/>
+
+    <waml.converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+    <waml.converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    <waml.converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
+    <waml.converters:InverseNullToBoolConverter x:Key="InverseNullToBoolConverter"/>
+    <waml.converters:StringEmptyToBoolConverter x:Key="StringEmptyToBoolConverter"/>
+    <waml.converters:InverseNullToVisibilityConverter x:Key="InverseNullToVisibilityConverter"/>
 
     <Style x:Key="WamlComboBoxFocusVisual">
         <Setter Property="Control.Template">
@@ -11,7 +28,8 @@
                     <Rectangle Margin="4,4,21,4" 
                                SnapsToDevicePixels="true" 
                                Stroke="{DynamicResource Palette8}" 
-                               StrokeThickness="1" StrokeDashArray="1 2"/>
+                               StrokeThickness="1"
+                               StrokeDashArray="1 2"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -23,6 +41,7 @@
         <Setter Property="IsTabStop" Value="false"/>
         <Setter Property="Focusable" Value="false"/>
         <Setter Property="ClickMode" Value="Press"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -30,31 +49,22 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             Background="{TemplateBinding Background}" 
-                            CornerRadius="1"
-                            SnapsToDevicePixels="true">
-                        <!--   
-                        <Grid HorizontalAlignment="Right" Width="13">
-                            <Border x:Name="bdArrow" Visibility="Hidden" 
-                                    Background="{TemplateBinding BorderBrush}" 
-                                    BorderThickness="1,0,0,0" BorderBrush="{DynamicResource Palette6}"/>
-                            <Path x:Name="Arrow" Data="M 0 0 L 3 3 L 6 0 Z" 
-                                  Fill="{StaticResource Palette11}" 
-                                  HorizontalAlignment="Center" 
-                                  VerticalAlignment="Center"/>
-                        </Grid>
-                        -->
-                        <Border x:Name="Arrow" HorizontalAlignment="Right" Width="32">
+                            CornerRadius="4"
+                            SnapsToDevicePixels="true">                        
+                        <Border x:Name="Arrow"
+                                HorizontalAlignment="Right"
+                                Width="32">
                             <waml:WamlIcon Icon="ChevronDown" 
-                                               VerticalAlignment="Center" 
-                                               HorizontalAlignment="Center" />
+                                           Foreground="{StaticResource PrimaryBrush}"
+                                           VerticalAlignment="Center" 
+                                           HorizontalAlignment="Center" />
                         </Border>
-                    </Border>
-                    
+                    </Border>                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocusWithin" Value="true">
                             <Setter Property="BorderThickness" TargetName="Bd" Value="2"/>
                             <Setter Property="CornerRadius" TargetName="Bd" Value="0.5"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Communication.CommunicationPrimary}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource PrimaryBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray20}"/>
@@ -67,30 +77,7 @@
                                 <Condition Property="IsFocused" Value="false"/>
                             </MultiTrigger.Conditions>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray160}"/>
-                        </MultiTrigger>
-                        <!--
-						<Trigger Property="IsChecked" Value="true">
-							<Setter Property="RenderPressed" TargetName="Chrome" Value="true"/>
-						</Trigger>
-						
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="true"/>
-                                <Condition Property="IsPressed" Value="false"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Visibility" TargetName="bdArrow" Value="Visible"/>
-                            <Setter Property="Fill" TargetName="Arrow" Value="{DynamicResource Palette6}"/>
-                        </MultiTrigger>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Visibility" TargetName="bdArrow" Value="Visible"/>
-                            <Setter Property="BorderThickness" TargetName="bdArrow" Value="0"/>
-                            <Setter Property="Fill" TargetName="Arrow" Value="{StaticResource Palette10}"/>
-                            <Setter Property="Background" TargetName="bdArrow" Value="{StaticResource Palette6}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Fill" TargetName="Arrow" Value="#AFAFAF"/>
-                        </Trigger>
-                        -->
+                        </MultiTrigger>                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -107,11 +94,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <ScrollViewer x:Name="PART_ContentHost" Background="Transparent" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    <ScrollViewer x:Name="PART_ContentHost" 
+                                  Background="Transparent" 
+                                  Focusable="false"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Hidden"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" 
+                Value="Center"/>
     </Style>
     
     <Style x:Key="WamlComboBoxToggleButton" TargetType="ToggleButton">
@@ -133,12 +125,7 @@
                             <Path x:Name="Arrow" Data="{StaticResource DownArrowGeometry}" Fill="{StaticResource Palette11}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <!--
-						<Trigger Property="IsChecked" Value="true">
-							<Setter Property="RenderPressed" TargetName="Chrome" Value="true"/>
-						</Trigger>
-						-->
+                    <ControlTemplate.Triggers>                       
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="true"/>
@@ -242,10 +229,9 @@
                             Background="{TemplateBinding Background}" 
                             Padding="{TemplateBinding Padding}" 
                             SnapsToDevicePixels="true">
-                        <ContentPresenter 
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="true">
@@ -270,83 +256,63 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="Padding" Value="8,0"/>
-        <Setter Property="Height" Value="32"/>
+        <Setter Property="Height" Value="40"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid x:Name="MainGrid" SnapsToDevicePixels="true">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="32"/>
-                        </Grid.ColumnDefinitions>
-                        <!--
-                        <Popup x:Name="PART_Popup" 
-                        AllowsTransparency="true"
-                        Grid.ColumnSpan="2" 
-                        Margin="1" 
-                        IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" 
-                        PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}"
-                        Placement="Bottom" 
-                        VerticalOffset="-1">
-                            <Themes:SystemDropShadowChrome x:Name="Shdw" 
-                            Color="Transparent" 
-                            MaxHeight="{TemplateBinding MaxDropDownHeight}" 
-                            MinWidth="{Binding ActualWidth, ElementName=MainGrid}">
-                                <Border x:Name="DropDownBorder" Margin="1,0,1,0" 
-                                        BorderBrush="{DynamicResource Palette12}" 
-                                        BorderThickness="1" 
-                                        Background="{DynamicResource Palette13}" 
-                                        Padding="2">
-
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" 
+                                    Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource NullToVisibilityConverter}}">
+                            <TextBlock FontWeight="SemiBold" 
+                                       Padding="1,5,0,5" 
+                                       Text="{TemplateBinding waml:WamlExtra.Label}"/>
+                            <TextBlock Foreground="{StaticResource Shared.SharedRed20}" 
+                                       Padding="4,5" 
+                                       Text="*" 
+                                       Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                        </StackPanel>
+                        <Grid x:Name="MainGrid" 
+                              SnapsToDevicePixels="true"
+                              MinHeight="40">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="32"/>
+                            </Grid.ColumnDefinitions>
+                            <Popup x:Name="PART_Popup" 
+                                   AllowsTransparency="true" 
+                                   Grid.ColumnSpan="2" 
+                                   Focusable="false" 
+                                   IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" 
+                                   Margin="1" 
+                                   Placement="Bottom">
+                                <Border Background="{StaticResource Neutral.Gray100}"
+                                        Effect="{StaticResource Depth8}" 
+                                        MinWidth="{Binding ActualWidth, ElementName=MainGrid}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}" 
+                                        Margin="10,0,10,10" 
+                                        CornerRadius="4">
+                                    <ScrollViewer CanContentScroll="true">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" 
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </ScrollViewer>
                                 </Border>
-                            </Themes:SystemDropShadowChrome>
-                        </Popup>
-                        -->
-                        <Popup x:Name="PART_Popup" 
-                               AllowsTransparency="true" 
-                               Focusable="false" 
-                               IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" 
-                               Placement="Bottom"
-                               Grid.ColumnSpan="2" 
-                               Margin="1" 
-                               >
-                            <Border Background="{StaticResource Neutral.White}" 
-                                    Margin="10,0,10,10" 
-                                    Effect="{StaticResource Depth8}"
-                                    MaxHeight="{TemplateBinding MaxDropDownHeight}" 
-                                    MinWidth="{Binding ActualWidth, ElementName=MainGrid}">
-                                <ScrollViewer CanContentScroll="true">
-                                    <ItemsPresenter 
-                                        KeyboardNavigation.DirectionalNavigation="Contained" 
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                </ScrollViewer>
-                            </Border>
-                        </Popup>
-                        <ToggleButton 
-                            BorderBrush="{TemplateBinding BorderBrush}" 
-                            Background="{TemplateBinding Background}" 
-                            Grid.ColumnSpan="2" 
-                            IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
-                            Style="{StaticResource WamlComboBoxReadonlyToggleButton}"/>
-                        <ContentPresenter 
-                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
-                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
-                            Content="{TemplateBinding SelectionBoxItem}" 
-                            ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" 
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                            IsHitTestVisible="false" 
-                            Margin="{TemplateBinding Padding}" 
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <!--<Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
-                            <Setter Property="Margin" TargetName="Shdw" Value="0,0,5,5"/>
-                            <Setter Property="Color" TargetName="Shdw" Value="#71000000"/>
-                        </Trigger>
-                        <Trigger Property="HasItems" Value="false">
-                            <Setter Property="Height" TargetName="DropDownBorder" Value="95"/>
-                        </Trigger>-->
+                            </Popup>
+                            <ToggleButton Background="{TemplateBinding Background}" 
+                                          BorderBrush="{TemplateBinding BorderBrush}" 
+                                          Grid.ColumnSpan="2"
+                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Style="{StaticResource WamlComboBoxReadonlyToggleButton}"/>
+                            <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                              Content="{TemplateBinding SelectionBoxItem}" 
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
+                                              ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              IsHitTestVisible="false" Margin="{TemplateBinding Padding}" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </DockPanel>
+                    <ControlTemplate.Triggers>                       
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
                             <Setter Property="Background" Value="#FFF4F4F4"/>
