@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:waml.styles="clr-namespace:WamlDesign.Styles"
+                    xmlns:waml="clr-namespace:WamlDesign"                    
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <Style TargetType="Button" BasedOn="{StaticResource WamlButtonStyle}"/>
+    <Style TargetType="ToggleButton" BasedOn="{StaticResource WamlToggleButtonStyle}"/>
+    <Style TargetType="Menu" BasedOn="{StaticResource WamlMenuStyle}"/>
+    <Style TargetType="ContextMenu" BasedOn="{StaticResource WamlContextMenuStyle}"/>
+    <Style TargetType="MenuItem" BasedOn="{StaticResource WamlMenuItemStyle}"/>
+    <Style TargetType="Separator" BasedOn="{StaticResource WamlSeparatorStyle}"/>
+    <Style TargetType="TabControl" BasedOn="{StaticResource WamlTabControlStyle}"/>
+    <Style TargetType="TabItem" BasedOn="{StaticResource WamlTabItemStyle}"/>
+    <Style TargetType="TextBox" BasedOn="{StaticResource WamlTextBoxStyle}"/>
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource WamlPasswordBoxStyle}"/>
+    <Style TargetType="ToolBar" BasedOn="{StaticResource WamlToolBarStyle}"/>
+    <Style TargetType="ToolBarTray" BasedOn="{StaticResource WamlToolBarTrayStyle}"/>
+    <Style TargetType="TreeView" BasedOn="{StaticResource WamlTreeViewStyle}"/>
+    <Style TargetType="TreeViewItem" BasedOn="{StaticResource WamlTreeViewItemStyle}"/>
+    <Style TargetType="ListView" BasedOn="{StaticResource WamlListViewStyle}"/>   
+    <Style TargetType="ComboBox" BasedOn="{StaticResource WamlComboBoxStyle}"/>
+    <Style TargetType="CheckBox" BasedOn="{StaticResource WamlCheckBoxStyle}"/>
+    <Style TargetType="GridSplitter" BasedOn="{StaticResource WamlGridSplitter}"/>
+    <Style TargetType="DataGrid" BasedOn="{StaticResource WamlDataGridStyle}"/>
+    <Style TargetType="ListBox" BasedOn="{StaticResource WamlListBoxStyle}"/>
+
+</ResourceDictionary>
