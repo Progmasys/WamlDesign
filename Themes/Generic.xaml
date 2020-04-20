@@ -3,111 +3,146 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:shell="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
     xmlns:waml.styles="clr-namespace:WamlDesign.Styles"
-    xmlns:waml="clr-namespace:WamlDesign"
-    >
+     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    xmlns:waml="clr-namespace:WamlDesign">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/WamlDesign;component/Styles/Waml.Brushes.xaml" />
+        <ResourceDictionary Source="/WamlDesign;component/Styles/Colors/WamlColor.Blue.xaml"/>
+        <ResourceDictionary Source="/WamlDesign;component/Styles/Colors/WamlLightThemeColor.xaml"/>
+        <ResourceDictionary Source="/WamlDesign;component/Styles/Waml.Brushes.xaml"/>
         <ResourceDictionary Source="/WamlDesign;component/Styles/Waml.Buttons.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
-    <Style TargetType="{x:Type waml:WamlWindow}">
-        <Setter Property="Foreground" Value="{StaticResource Neutral.Gray160}"/>
-        <Setter Property="FontSize" Value="12"/>
 
-        <Setter Property="shell:WindowChrome.WindowChrome">
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" po:Freeze="True"/>
+
+    <Style TargetType="{x:Type waml:WamlWindow}">
+        <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
-                <shell:WindowChrome 
-                    CaptionHeight="63" 
-                    UseAeroCaptionButtons="False"
-                    />
+                <WindowChrome CaptionHeight="40"
+                              UseAeroCaptionButtons="False"/>
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type waml:WamlWindow}">
-                    <Grid>
-                        <Border Background="{StaticResource Neutral.White}" Padding="24, 63, 24, 24">
-                            <ContentPresenter Content="{TemplateBinding Content}" />
-                        </Border>
-                        <TextBlock 
-                            Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"   
-                            Foreground="{StaticResource Neutral.Gray160}"
-                            FontWeight="SemiBold"
-                            FontSize="20"
-                            VerticalAlignment="Top" HorizontalAlignment="Left"   
-                            Margin="24,16,20,46"/>
-                        <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}"  
-                           VerticalAlignment="Top" HorizontalAlignment="Left"  
-                           Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(shell:WindowChrome.WindowChrome).ResizeBorderThickness}"   
-                           Width="16"  
-                           shell:WindowChrome.IsHitTestVisibleInChrome="True"/>
-                        <StackPanel Orientation="Horizontal"
-                                    VerticalAlignment="Top" 
-                                    HorizontalAlignment="Right"
-                                    Margin="15">
-                            <waml:WamlChromeButton 
-                                x:Name="minimizeButton"
-                                Style="{StaticResource WamlButtonStyle}" 
-                                shell:WindowChrome.IsHitTestVisibleInChrome="True"
-                                Mode="Minimize"
-                                Height="32"
-                                Width="32"
-                                Padding="4"
-                                BorderThickness="0">
-                                <waml:WamlIcon Icon="ChromeMinimize"/>
-                            </waml:WamlChromeButton>
-                            <waml:WamlChromeButton 
-                                x:Name="maximixedButton"
-                                Style="{StaticResource WamlButtonStyle}" 
-                                shell:WindowChrome.IsHitTestVisibleInChrome="True"
-                                Mode="Maximize"
-                                Height="32"
-                                Width="32"
-                                Padding="4"
-                                BorderThickness="0">
-                                <waml:WamlIcon Icon="ChromeFullScreen"/>
-                            </waml:WamlChromeButton>
-                            <waml:WamlChromeButton 
-                                x:Name="restoreButton"
-                                Style="{StaticResource WamlButtonStyle}" 
-                                shell:WindowChrome.IsHitTestVisibleInChrome="True"
-                                Mode="Restore"
-                                Height="32"
-                                Width="32"
-                                Padding="4"
-                                BorderThickness="0">
-                                <waml:WamlIcon Icon="ChromeRestore"/>
-                            </waml:WamlChromeButton>
-                            <waml:WamlChromeButton 
-                                x:Name="closeButton"
-                                Style="{StaticResource WamlButtonStyle}" 
-                                shell:WindowChrome.IsHitTestVisibleInChrome="True"
-                                Mode="Close"
-                                Height="32"
-                                Width="32"
-                                Padding="4"
-                                BorderThickness="0">
-                                <waml:WamlIcon Icon="ChromeClose"/>
-                            </waml:WamlChromeButton>
-                        </StackPanel>
-                    </Grid>
+                    <Border x:Name="PART_WindowBorder">
+                        <Grid x:Name="PART_WindowChromeHost"
+                              UseLayoutRounding="True">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <DockPanel x:Name="PART_WindowChromeBar" 
+                                       Grid.Row="0"
+                                       Background="{StaticResource PrimaryBrush}">
+                                <Border DockPanel.Dock="Left"
+                                        HorizontalAlignment="Left"
+                                        WindowChrome.IsHitTestVisibleInChrome="True"      
+                                        VerticalAlignment="Top"                  
+                                        Margin="10 5"
+                                        Width="30"                            
+                                        Cursor="Hand">
+                                    <ContentPresenter x:Name="PART_Icon"
+                                                      Content="{TemplateBinding ChromeWindowIcon}"/>
+                                </Border>
+                                <Border DockPanel.Dock="Left"
+                                        HorizontalAlignment="Left"
+                                        WindowChrome.IsHitTestVisibleInChrome="True"
+                                        Background="{StaticResource PrimaryBrush}">
+                                    <ContentPresenter x:Name="PART_TitleArea"
+                                                      Content="{TemplateBinding TitleArea}"/>
+                                </Border>
+
+                                <DockPanel x:Name="PART_WindowChromeButtons"
+                                           DockPanel.Dock="Right"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Top">
+                                    <Button Style="{StaticResource WamlChromeWindowCloseButtonStyle}"
+                                            BorderThickness="0"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
+                                            DockPanel.Dock="Right"
+                                            x:Name="PART_CloseButton"
+                                            ToolTip="Fechar">
+                                        <Button.Content>
+                                            <Path Data="M0,0 L1,1 M0,1 L1,0"
+                                                  Stretch="Fill"
+                                                  Stroke="White"
+                                                  StrokeThickness="1"
+                                                  Width="12"
+                                                  Height="12" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Style="{StaticResource WamlChromeWindowButtonStyle}"
+                                            BorderThickness="0"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
+                                            SnapsToDevicePixels="True"
+                                            DockPanel.Dock="Right"
+                                            x:Name="PART_MaximizeButton"
+                                            ToolTip="Maximizar">
+                                        <Button.Content>
+                                            <Path DockPanel.Dock="Right"
+                                                  Data="M0,1 L9,1 L9,8 L0,8 Z"
+                                                  Stretch="Fill"
+                                                  Stroke="White"
+                                                  StrokeThickness="1"
+                                                  Width="11"
+                                                  Height="11" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Style="{StaticResource WamlChromeWindowButtonStyle}"
+                                            BorderThickness="0" 
+                                            UseLayoutRounding="True"
+                                            SnapsToDevicePixels="True"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
+                                            DockPanel.Dock="Right"                                                        
+                                            x:Name="PART_RestoreButton"
+                                            ToolTip="Restaurar">
+                                        <Button.Content>
+                                            <Path DockPanel.Dock="Right"
+                                                  Data="M2,0 L8,0 L8,6 M6,3 L6,3 M0,2 L6,2 L6,8 L0,8 Z"
+                                                  Stretch="Fill"                                  
+                                                  Stroke="White"
+                                                  StrokeThickness="1"
+                                                  Width="13"
+                                                  Height="13" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Style="{StaticResource WamlChromeWindowButtonStyle}"                  
+                                            BorderThickness="0"
+                                            UseLayoutRounding="False"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
+                                            DockPanel.Dock="Right"
+                                            x:Name="PART_MinimizeButton"
+                                            ToolTip="Minimizar">
+                                        <Button.Content>
+                                            <Line Stroke="White"
+                                                  X1="0"
+                                                  X2="12"
+                                                  Y1="1"
+                                                  Y2="1"
+                                                  StrokeThickness="1"
+                                                  Height="3"/>
+                                        </Button.Content>
+                                    </Button>
+                                </DockPanel>
+                            </DockPanel>
+
+                            <ContentPresenter x:Name="PART_Content"
+                                              Grid.Row="1"
+                                              UseLayoutRounding="True"
+                                              Content="{TemplateBinding Content}" />
+                        </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="WindowState" Value="Maximized">
-                            <Setter Property="Visibility" TargetName="maximixedButton" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="PART_MaximizeButton" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="PART_RestoreButton" Value="Visible"/>
+                            <Setter Property="BorderThickness" TargetName="PART_WindowBorder" Value="{Binding Source={x:Static SystemParameters.WindowResizeBorderThickness}}"/>
                         </Trigger>
                         <Trigger Property="WindowState" Value="Normal">
-                            <Setter Property="Visibility" TargetName="restoreButton" Value="Collapsed"/>
-                        </Trigger>
-                        <Trigger Property="ResizeMode" Value="NoResize">
-                            <Setter Property="Visibility" TargetName="maximixedButton" Value="Collapsed"/>
-                            <Setter Property="Visibility" TargetName="restoreButton" Value="Collapsed"/>
-                            <Setter Property="Visibility" TargetName="minimizeButton" Value="Collapsed"/>
-                        </Trigger>
-                        <Trigger Property="ResizeMode" Value="CanMinimize">
-                            <Setter Property="Visibility" TargetName="maximixedButton" Value="Collapsed"/>
-                            <Setter Property="Visibility" TargetName="restoreButton" Value="Collapsed"/>
-                            <Setter Property="Visibility" TargetName="minimizeButton" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="PART_MaximizeButton" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="PART_RestoreButton" Value="Collapsed"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

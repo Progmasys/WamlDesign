@@ -2,8 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:waml.styles="clr-namespace:WamlDesign.Styles"
                     xmlns:waml.converters="clr-namespace:WamlDesign.Converters"
-                    xmlns:waml="clr-namespace:WamlDesign"
-                    >
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:waml="clr-namespace:WamlDesign">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="./Colors/WamlColor.Blue.xaml"/>
+        <ResourceDictionary Source="./Colors/WamlLightThemeColor.xaml"/>
+        <ResourceDictionary Source="Waml.Brushes.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" po:Freeze="True"/>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}" po:Freeze="True"/>
+    <SolidColorBrush x:Key="BorderBackgroundSelected" Color="{StaticResource Dark-100}" po:Freeze="True"/>
+    <SolidColorBrush x:Key="ButtonOutlinedMouseOver" Color="{StaticResource Light-200}" po:Freeze="True"/>
+    <SolidColorBrush x:Key="ButtonOutlinedClick" Color="{StaticResource Light-100}" po:Freeze="True"/>
+    <SolidColorBrush x:Key="ButtonStaticForeground" Color="{StaticResource White}" po:Freeze="True"/>
 
     <waml.converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
     <waml.converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
@@ -26,49 +39,49 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <DockPanel>
-                        <StackPanel 
-                            DockPanel.Dock="Top"
-                            Orientation="Horizontal" 
-                            Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource NullToVisibilityConverter}}">
-                            <TextBlock 
-                                Text="{TemplateBinding waml:WamlExtra.Label}"
-                                Padding="1,5,0,5" 
-                                FontWeight="SemiBold" />
-                            <TextBlock 
-                                Text="*"
-                                Padding="4,5" 
-                                Foreground="{StaticResource Shared.SharedRed20}"
-                                Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                        <StackPanel DockPanel.Dock="Top"
+                                    Orientation="Horizontal" 
+                                    Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource NullToVisibilityConverter}}">
+                            <TextBlock Text="{TemplateBinding waml:WamlExtra.Label}"
+                                       Padding="1,5,0,5" 
+                                       FontWeight="SemiBold" />
+                            <TextBlock Text="*"
+                                       Padding="4,5" 
+                                       Foreground="{StaticResource Shared.SharedRed20}"
+                                       Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
                         </StackPanel>
-                        <TextBlock 
-                            DockPanel.Dock="Bottom"
-                            Text="{TemplateBinding waml:WamlExtra.ErrorMessage}"
-                            Padding="1,5,0,0" 
-                            FontSize="12"
-                            Foreground="{StaticResource Shared.SharedRed20}"
-                            Visibility="{TemplateBinding waml:WamlExtra.ErrorMessage, Converter={StaticResource NullToVisibilityConverter}}"/>
+                        <TextBlock DockPanel.Dock="Bottom"
+                                   Text="{TemplateBinding waml:WamlExtra.ErrorMessage}"
+                                   Padding="1,5,0,0" 
+                                   FontSize="12"
+                                   Foreground="{StaticResource Shared.SharedRed20}"
+                                   Visibility="{TemplateBinding waml:WamlExtra.ErrorMessage, Converter={StaticResource NullToVisibilityConverter}}"/>
                         <DockPanel>
-                            <Border 
-                                DockPanel.Dock="Right"
-                                Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource InverseNullToVisibilityConverter}}">
-                                <TextBlock 
-                                    x:Name="RequiredMark"
-                                    Text="*"
-                                    VerticalAlignment="Top"
-                                    Margin="4,0"
-                                    Foreground="{StaticResource Shared.SharedRed20}"
-                                    Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            <Border DockPanel.Dock="Right"
+                                    Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource InverseNullToVisibilityConverter}}">
+                                <TextBlock x:Name="RequiredMark"
+                                           Text="*"
+                                           VerticalAlignment="Top"
+                                           Margin="4,0"
+                                           Foreground="{StaticResource Shared.SharedRed20}"
+                                           Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
                             </Border>
                             <Border x:Name="Bd" 
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}" 
                                     Background="{TemplateBinding Background}" 
                                     SnapsToDevicePixels="true" 
-                                    CornerRadius="1" 
-                                    MinHeight="32">
+                                    CornerRadius="4" 
+                                    MinHeight="40">
                                 <Grid>
-                                    <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Padding="0"/>
-                                    <TextBlock x:Name="Wm" Text="{TemplateBinding waml:WamlExtra.Placeholder}" VerticalAlignment="Center" Margin="9,0" IsHitTestVisible="False"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" 
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                  Padding="0"/>
+                                    <TextBlock x:Name="Wm" 
+                                               Text="{TemplateBinding waml:WamlExtra.Placeholder}" 
+                                               VerticalAlignment="Center"
+                                               Margin="9,0"
+                                               IsHitTestVisible="False"/>
                                 </Grid>
                             </Border>
                         </DockPanel>                    
@@ -76,8 +89,8 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocusWithin" Value="true">
                             <Setter Property="BorderThickness" TargetName="Bd" Value="2"/>
-                            <Setter Property="CornerRadius" TargetName="Bd" Value="0.5"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Communication.CommunicationPrimary}"/>
+                            <Setter Property="CornerRadius" TargetName="Bd" Value="4"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource PrimaryBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray20}"/>
@@ -131,50 +144,57 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <StackPanel>
-                        <StackPanel 
-                            Orientation="Horizontal" 
-                            Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource NullToVisibilityConverter}}">
-                            <TextBlock 
-                                Text="{TemplateBinding waml:WamlExtra.Label}"
-                                Padding="1,5,0,5" 
-                                FontWeight="SemiBold" />
-                            <TextBlock 
-                                Text="*"
-                                Padding="4,5" 
-                                Foreground="{StaticResource Shared.SharedRed20}"
-                                Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                        <StackPanel Orientation="Horizontal" 
+                                    Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource NullToVisibilityConverter}}">
+                            <TextBlock Text="{TemplateBinding waml:WamlExtra.Label}"
+                                       Padding="1,5,0,5" 
+                                       Foreground="{StaticResource Neutral.Gray160}"
+                                       FontWeight="SemiBold" />
+                            <TextBlock Text="*"
+                                       Padding="4,5" 
+                                       Foreground="{StaticResource Shared.SharedRed20}"
+                                       Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
                         </StackPanel>
                         <DockPanel>
-                            <Border 
-                                DockPanel.Dock="Right"
-                                Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource InverseNullToVisibilityConverter}}">
-                                <TextBlock 
-                                    x:Name="RequiredMark"
-                                    Text="*"
-                                    VerticalAlignment="Top"
-                                    Margin="4,0"
-                                    Foreground="{StaticResource Shared.SharedRed20}"
-                                    Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            <Border DockPanel.Dock="Right"
+                                    Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource InverseNullToVisibilityConverter}}">
+                                <TextBlock x:Name="RequiredMark"
+                                           Text="*"
+                                           VerticalAlignment="Top"
+                                           Margin="4,0"
+                                           Foreground="{StaticResource Shared.SharedRed20}"
+                                           Visibility="{TemplateBinding waml:WamlExtra.IsRequired, Converter={StaticResource BoolToVisibilityConverter}}"/>
                             </Border>
-                            <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" CornerRadius="1" MinHeight="32">
+                            <Border x:Name="Bd" 
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="{TemplateBinding Background}"
+                                    SnapsToDevicePixels="true"
+                                    CornerRadius="4" 
+                                    MinHeight="40">
                                 <Grid>
-                                    <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Padding="0"/>
-                                    <TextBlock x:Name="Wm" Text="{TemplateBinding waml:WamlExtra.Placeholder}" VerticalAlignment="Center" Margin="9,0" IsHitTestVisible="False"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" 
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                  Padding="0"/>
+                                    <TextBlock x:Name="Wm" 
+                                               Text="{TemplateBinding waml:WamlExtra.Placeholder}"
+                                               VerticalAlignment="Center"
+                                               Margin="9,0" 
+                                               IsHitTestVisible="False"/>
                                 </Grid>
                             </Border>
                         </DockPanel>
-                        <TextBlock 
-                            Text="{TemplateBinding waml:WamlExtra.ErrorMessage}"
-                            Padding="1,5,0,0" 
-                            FontSize="12"
-                            Foreground="{StaticResource Shared.SharedRed20}"
-                            Visibility="{TemplateBinding waml:WamlExtra.ErrorMessage, Converter={StaticResource NullToVisibilityConverter}}"/>
+                        <TextBlock Text="{TemplateBinding waml:WamlExtra.ErrorMessage}"
+                                   Padding="1,5,0,0" 
+                                   FontSize="12"
+                                   Foreground="{StaticResource Shared.SharedRed20}"
+                                   Visibility="{TemplateBinding waml:WamlExtra.ErrorMessage, Converter={StaticResource NullToVisibilityConverter}}"/>
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocusWithin" Value="true">
                             <Setter Property="BorderThickness" TargetName="Bd" Value="2"/>
-                            <Setter Property="CornerRadius" TargetName="Bd" Value="0.5"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Communication.CommunicationPrimary}"/>
+                            <Setter Property="CornerRadius" TargetName="Bd" Value="4"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource PrimaryBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray20}"/>
@@ -204,38 +224,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
-
-    <!--<Style x:Key="FabricPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-        <Setter Property="Background" Value="{DynamicResource Palette5}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Palette9}"/>
-        <Setter Property="PasswordChar" Value="●"/>
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="AllowDrop" Value="true"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type PasswordBox}">
-                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                        <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsKeyboardFocusWithin" Value="true">
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource Palette15}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
+    </Style> 
 
 </ResourceDictionary>

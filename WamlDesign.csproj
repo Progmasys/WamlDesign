@@ -13,7 +13,7 @@
     <PackageTags>xaml, wpf, ui</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-  </PropertyGroup>
+  </PropertyGroup>  
 
   <ItemGroup>
     <Resource Include="Fonts\fabric-icons-a13498cf.ttf" />
@@ -35,6 +35,28 @@
     <Resource Include="Fonts\15\fabric-icons-15-3807251b.TTF" />
     <Resource Include="Fonts\16\fabric-icons-16-9cf93f3b.TTF" />
     <Resource Include="Fonts\17\fabric-icons-17-0c4ed701.TTF" />
+    <Resource Include="Fonts\Roboto-Black.ttf" />
+    <Resource Include="Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Fonts\Roboto-Light.ttf" />
+    <Resource Include="Fonts\Roboto-LightItalic.ttf" />
+    <Resource Include="Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Fonts\Roboto-ThinItalic.ttf" />
+    <Resource Include="Fonts\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Fonts\RobotoCondensed-BoldItalic.ttf" />
+    <Resource Include="Fonts\RobotoCondensed-Italic.ttf" />
+    <Resource Include="Fonts\RobotoCondensed-Light.ttf" />
+    <Resource Include="Fonts\RobotoCondensed-LightItalic.ttf" />
+    <Resource Include="Fonts\RobotoCondensed-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>
