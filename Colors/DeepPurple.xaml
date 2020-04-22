@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="50">#EDE7F6</Color>
+    <Color x:Key="100">#D1C4E9</Color>
+    <Color x:Key="200">#B39DDB</Color>
+    <Color x:Key="300">#9575CD</Color>
+    <Color x:Key="400">#7E57C2</Color>
+    <Color x:Key="500">#673AB7</Color>
+    <Color x:Key="600">#5E35B1</Color>
+    <Color x:Key="700">#512DA8</Color>
+    <Color x:Key="800">#4527A0</Color>
+    <Color x:Key="900">#311B92</Color>
+    <Color x:Key="A100">#B388FF</Color>
+    <Color x:Key="A200">#7C4DFF</Color>
+    <Color x:Key="A400">#651FFF</Color>
+    <Color x:Key="A700">#6200EA</Color>
+
+</ResourceDictionary>

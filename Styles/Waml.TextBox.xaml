@@ -26,9 +26,9 @@
     <waml.converters:InverseNullToVisibilityConverter x:Key="InverseNullToVisibilityConverter"/>
 
     <Style x:Key="WamlTextBoxStyle" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
-        <Setter Property="Foreground" Value="{StaticResource Neutral.Gray160}"/>
-        <Setter Property="Background" Value="{StaticResource Neutral.White}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Neutral.Gray110}"/>
+        <Setter Property="Foreground" Value="{DynamicResource RegularTextBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource NeutralBorderBrush}"/>        
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="8,0"/>
         <Setter Property="Margin" Value="0,0,0,10"/>
@@ -44,7 +44,8 @@
                                     Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource NullToVisibilityConverter}}">
                             <TextBlock Text="{TemplateBinding waml:WamlExtra.Label}"
                                        Padding="1,5,0,5" 
-                                       FontWeight="SemiBold" />
+                                       Foreground="{DynamicResource MediumTextBrush}"
+                                       FontWeight="Medium" />
                             <TextBlock Text="*"
                                        Padding="4,5" 
                                        Foreground="{StaticResource Shared.SharedRed20}"
@@ -90,7 +91,7 @@
                         <Trigger Property="IsKeyboardFocusWithin" Value="true">
                             <Setter Property="BorderThickness" TargetName="Bd" Value="2"/>
                             <Setter Property="CornerRadius" TargetName="Bd" Value="4"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource PrimaryBrushRegular}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray20}"/>
@@ -108,7 +109,7 @@
                                 <Condition Property="IsMouseOver" Value="true"/>
                                 <Condition Property="IsFocused" Value="false"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray160}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource NeutralBorderBrushSelected}"/>
                         </MultiTrigger>
                         <DataTrigger Value="true">
                             <DataTrigger.Binding>
@@ -129,9 +130,9 @@
     </Style>
 
     <Style x:Key="WamlPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
-        <Setter Property="Foreground" Value="{StaticResource Neutral.Gray160}"/>
-        <Setter Property="Background" Value="{StaticResource Neutral.White}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Neutral.Gray110}"/>
+        <Setter Property="Foreground" Value="{DynamicResource RegularTextBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource NeutralBorderBrush}"/>
         <Setter Property="PasswordChar" Value="●"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="8,0"/>
@@ -148,8 +149,8 @@
                                     Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource NullToVisibilityConverter}}">
                             <TextBlock Text="{TemplateBinding waml:WamlExtra.Label}"
                                        Padding="1,5,0,5" 
-                                       Foreground="{StaticResource Neutral.Gray160}"
-                                       FontWeight="SemiBold" />
+                                       Foreground="{DynamicResource MediumTextBrush}"
+                                       FontWeight="Medium" />
                             <TextBlock Text="*"
                                        Padding="4,5" 
                                        Foreground="{StaticResource Shared.SharedRed20}"
@@ -194,7 +195,7 @@
                         <Trigger Property="IsKeyboardFocusWithin" Value="true">
                             <Setter Property="BorderThickness" TargetName="Bd" Value="2"/>
                             <Setter Property="CornerRadius" TargetName="Bd" Value="4"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource PrimaryBrushRegular}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray20}"/>

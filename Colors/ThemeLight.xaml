@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <SolidColorBrush x:Key="PrimaryTextBrush" Color="#E0E0E0" po:Freeze="True"/>       <!-- .87% Black -->
+    <SolidColorBrush x:Key="RegularTextBrush" Color="#424242" po:Freeze="True"/>     <!-- Gray 800 -->
+    <SolidColorBrush x:Key="MediumTextBrush" Color="#757575" po:Freeze="True"/>      <!-- Gray 600 -->
+    <SolidColorBrush x:Key="DisableTextBrush" Color="#9e9e9e" po:Freeze="True"/>       <!-- .38% Black -->
+    <SolidColorBrush x:Key="BodyBrush" Color="#f7f7f7" po:Freeze="True"/>              <!-- .3% White -->
+
+    <SolidColorBrush x:Key="NeutralBorderBrush" Color="#9E9E9E" po:Freeze="True"/>               <!-- Gray 500 -->
+    <SolidColorBrush x:Key="NeutralBorderBrushSelected" Color="#424242" po:Freeze="True"/>       <!-- Gray 800 -->
+
+</ResourceDictionary>

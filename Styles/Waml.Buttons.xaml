@@ -24,7 +24,7 @@
                                StrokeDashArray="1 2" 
                                SnapsToDevicePixels="true" 
                                StrokeThickness="1" 
-                               Stroke="{StaticResource PrimaryBrush}"/>
+                               Stroke="{DynamicResource PrimaryBrushRegular}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -32,9 +32,9 @@
 
     <Style x:Key="WamlChromeWindowButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlFocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Neutral.Gray110}"/>
-        <Setter Property="Foreground" Value="{StaticResource Neutral.Gray160}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBrushRegular}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource NeutralBorderBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Neutral.Gray160}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -66,7 +66,7 @@
 
     <Style x:Key="WamlChromeWindowCloseButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlFocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Neutral.Gray110}"/>
         <Setter Property="Foreground" Value="{StaticResource Neutral.Gray160}"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -101,9 +101,9 @@
 
     <Style x:Key="WamlToggleButtonStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlFocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource Neutral.White}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Neutral.Gray130}"/>
-        <Setter Property="Foreground" Value="{StaticResource Neutral.Gray160}"/>
+        <Setter Property="Background" Value="{DynamicResource Neutral.White}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Neutral.Gray130}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Neutral.Gray160}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -138,7 +138,7 @@
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource PrimaryBrushRegular}"/>
                             <Setter Property="BorderThickness" TargetName="border" Value="0"/>
                             <Setter Property="Fill" TargetName="circle" Value="{StaticResource Neutral.White}"/>
                             <Setter Property="Margin" TargetName="circle" Value="24,4,4,4"/>                                            
@@ -159,7 +159,7 @@
                                 <Condition Property="IsMouseOver" Value="true"/>
                                 <Condition Property="IsChecked" Value="true"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource PrimaryBrushRegular}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -187,8 +187,8 @@
     <Style x:Key="WamlButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlFocusVisual}"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrushRegular}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -217,10 +217,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{StaticResource ButtonOutlinedMouseOver}"/>
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrushLight}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{StaticResource ButtonOutlinedClick}"/>
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrushMid}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Neutral.Gray20}"/>
@@ -236,8 +236,8 @@
     <Style x:Key="WamlDropBoxOutlined" TargetType="{x:Type waml:WamlDropBox}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlFocusVisual}"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrushRegular}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -270,7 +270,7 @@
                                            Icon="ChevronDown" 
                                            Size="12" 
                                            TextElement.FontWeight="Normal" 
-                                           Foreground="{StaticResource PrimaryBrush}" 
+                                           Foreground="{StaticResource PrimaryBrushRegular}" 
                                            Margin="0 0 8 0" 
                                            VerticalAlignment="Center" 
                                            HorizontalAlignment="Right"/>
@@ -278,10 +278,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" SourceName="border" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonOutlinedMouseOver}"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource PrimaryBrushLight}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="contentPresenter" Value="{StaticResource ButtonOutlinedClick}"/>
+                            <Setter Property="Background" TargetName="contentPresenter" Value="{DynamicResource PrimaryBrushMid}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Neutral.Gray20}"/>
@@ -295,13 +295,14 @@
     </Style>
 
     <!-- WamlDesign Primary Button Style -->
+    
     <Style x:Key="WamlPrimaryButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlFocusVisual}"/>
         <Setter Property="Background">
             <Setter.Value>
-                <LinearGradientBrush>
-                    <GradientStop Color="{StaticResource Secondary}" Offset="2.0" />
-                    <GradientStop Color="{StaticResource Primary}" Offset="0.3" />
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="{DynamicResource 500}" Offset="0.3" />
+                    <GradientStop Color="{DynamicResource A400}" Offset="2.0" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -332,7 +333,7 @@
                     </Border>
                     <ControlTemplate.Triggers>                       
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource BorderBackgroundSelected}"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource PrimaryBrushDark}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Neutral.Gray20}"/>

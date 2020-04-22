@@ -55,7 +55,7 @@
                                 HorizontalAlignment="Right"
                                 Width="32">
                             <waml:WamlIcon Icon="ChevronDown" 
-                                           Foreground="{StaticResource PrimaryBrush}"
+                                           Foreground="{StaticResource PrimaryBrushRegular}"
                                            VerticalAlignment="Center" 
                                            HorizontalAlignment="Center" />
                         </Border>
@@ -64,7 +64,7 @@
                         <Trigger Property="IsKeyboardFocusWithin" Value="true">
                             <Setter Property="BorderThickness" TargetName="Bd" Value="2"/>
                             <Setter Property="CornerRadius" TargetName="Bd" Value="0.5"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource PrimaryBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource PrimaryBrushRegular}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray20}"/>
@@ -76,7 +76,7 @@
                                 <Condition Property="IsMouseOver" Value="true"/>
                                 <Condition Property="IsFocused" Value="false"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Neutral.Gray160}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource PrimaryBrushDark}"/>
                         </MultiTrigger>                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -218,7 +218,7 @@
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Padding" Value="8,12"/>
-        <Setter Property="Background" Value="{StaticResource Neutral.White}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -249,9 +249,9 @@
 
     <Style x:Key="WamlComboBoxStyle" TargetType="ComboBox">
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlComboBoxFocusVisual}"/>
-        <Setter Property="Foreground" Value="{StaticResource Neutral.Gray130}"/>
-        <Setter Property="Background" Value="{StaticResource Neutral.White}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Neutral.Gray130}"/>
+        <Setter Property="Foreground" Value="{DynamicResource RegularTextBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource NeutralBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -285,7 +285,7 @@
                                    IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" 
                                    Margin="1" 
                                    Placement="Bottom">
-                                <Border Background="{StaticResource Neutral.Gray100}"
+                                <Border Background="{StaticResource Neutral.White}"
                                         Effect="{StaticResource Depth8}" 
                                         MinWidth="{Binding ActualWidth, ElementName=MainGrid}"
                                         MaxHeight="{TemplateBinding MaxDropDownHeight}" 
