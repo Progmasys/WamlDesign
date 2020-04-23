@@ -255,15 +255,15 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="Padding" Value="8,0"/>
-        <Setter Property="Height" Value="40"/>
+        <Setter Property="Padding" Value="8,0"/>      
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
                     <DockPanel>
                         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" 
                                     Visibility="{TemplateBinding waml:WamlExtra.Label, Converter={StaticResource NullToVisibilityConverter}}">
-                            <TextBlock FontWeight="SemiBold" 
+                            <TextBlock FontWeight="Regular"
+                                       Foreground="{DynamicResource MediumTextBrush}"
                                        Padding="1,5,0,5" 
                                        Text="{TemplateBinding waml:WamlExtra.Label}"/>
                             <TextBlock Foreground="{StaticResource Shared.SharedRed20}" 

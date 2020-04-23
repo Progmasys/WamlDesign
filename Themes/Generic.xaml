@@ -35,7 +35,7 @@
 
                             <DockPanel x:Name="PART_WindowChromeBar" 
                                        Grid.Row="0"
-                                       Background="{StaticResource PrimaryBrush}">
+                                       Background="{DynamicResource PrimaryBrushRegular}">
                                 <Border DockPanel.Dock="Left"
                                         HorizontalAlignment="Left"
                                         WindowChrome.IsHitTestVisibleInChrome="True"      

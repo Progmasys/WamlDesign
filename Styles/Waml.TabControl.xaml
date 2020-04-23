@@ -92,9 +92,8 @@
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="TextElement.FontSize" Value="14"/>
-        <Setter Property="TextElement.Foreground" Value="{DynamicResource RegularTextBrush}"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>        
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource MediumTextBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
@@ -106,7 +105,8 @@
                                 Padding="{TemplateBinding Padding}">
                             <ContentPresenter x:Name="Content" 
                                               TextElement.FontWeight="Medium"
-                                              ContentSource="Header" 
+                                              TextElement.FontSize="14"
+                                              ContentSource="Header"                                               
                                               HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" 
                                               RecognizesAccessKey="True" 
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
@@ -115,7 +115,7 @@
                         <Rectangle x:Name="BdSelected"
                                    VerticalAlignment="Bottom" 
                                    Height="2" 
-                                   Fill="{StaticResource PrimaryAccentLight}" 
+                                   Fill="{StaticResource PrimaryBrushDark}" 
                                    Visibility="Hidden" 
                                    Margin="14,0"/>
                     </Grid>
@@ -256,15 +256,14 @@
     </Style>
 
     <Style x:Key="WamlGroupButtonFirstTab" TargetType="{x:Type TabItem}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FluentTabItemFocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource WamlTabItemFocusVisual}"/>
         <Setter Property="Padding" Value="10,2"/>
         <Setter Property="Height" Value="40"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrushRegular}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="TextElement.FontSize" Value="14"/>
-        <Setter Property="TextElement.Foreground" Value="{StaticResource PrimaryBrushRegular}"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="TextElement.FontWeight" Value="Normal"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -288,16 +287,9 @@
                     </Grid>
                     <ControlTemplate.Triggers>                       
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="TextElement.FontWeight" TargetName="Bd" Value="SemiBold"/>
+                            <Setter Property="TextElement.FontWeight" TargetName="Bd" Value="Medium"/>
                             <Setter Property="Foreground" Value="{StaticResource StaticForeground}"/>
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="{StaticResource Secondary}" Offset="2.0" />
-                                        <GradientStop Color="{StaticResource Primary}" Offset="0.3" />
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrushRegular}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" Value="{StaticResource Neutral.Gray20}"/>
@@ -317,12 +309,11 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlTabItemFocusVisual}"/>
         <Setter Property="Padding" Value="10,2"/>
         <Setter Property="Height" Value="40"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="TextElement.FontSize" Value="14"/>
-        <Setter Property="TextElement.Foreground" Value="{StaticResource PrimaryBrushRegular}"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="TextElement.FontWeight" Value="Normal"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -346,16 +337,9 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="TextElement.FontWeight" TargetName="Bd" Value="SemiBold"/>
+                            <Setter Property="TextElement.FontWeight" TargetName="Bd" Value="Medium"/>
                             <Setter Property="Foreground" Value="{StaticResource StaticForeground}"/>
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="{StaticResource Secondary}" Offset="2.0" />
-                                        <GradientStop Color="{StaticResource Primary}" Offset="0.3" />
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrushRegular}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" Value="{StaticResource Neutral.Gray20}"/>
@@ -372,15 +356,14 @@
     </Style>
 
     <Style x:Key="WamlGroupButtonLastTab" TargetType="{x:Type TabItem}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FluentTabItemFocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource WamlTabItemFocusVisual}"/>
         <Setter Property="Padding" Value="10,2"/>
         <Setter Property="Height" Value="40"/>
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="TextElement.FontSize" Value="14"/>
-        <Setter Property="TextElement.Foreground" Value="{StaticResource PrimaryBrushRegular}"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="TextElement.FontWeight" Value="Normal"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -404,16 +387,9 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="TextElement.FontWeight" TargetName="Bd" Value="SemiBold"/>
+                            <Setter Property="TextElement.FontWeight" TargetName="Bd" Value="Medium"/>
                             <Setter Property="Foreground" Value="{StaticResource StaticForeground}"/>
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="{StaticResource Secondary}" Offset="2.0" />
-                                        <GradientStop Color="{StaticResource Primary}" Offset="0.3" />
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrushRegular}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" Value="{StaticResource Neutral.Gray20}"/>

@@ -8,7 +8,7 @@
     <SolidColorBrush x:Key="DisableTextBrush" Color="#9e9e9e" po:Freeze="True"/>       <!-- .38% Black -->
     <SolidColorBrush x:Key="BodyBrush" Color="#f7f7f7" po:Freeze="True"/>              <!-- .3% White -->
 
-    <SolidColorBrush x:Key="NeutralBorderBrush" Color="#9E9E9E" po:Freeze="True"/>               <!-- Gray 500 -->
+    <SolidColorBrush x:Key="NeutralBorderBrush" Color="#BDBDBD" po:Freeze="True"/>               <!-- Gray 400 -->
     <SolidColorBrush x:Key="NeutralBorderBrushSelected" Color="#424242" po:Freeze="True"/>       <!-- Gray 800 -->
 
 </ResourceDictionary>

@@ -51,7 +51,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource BorderBackgroundSelected}"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource PrimaryBrushMid}"/>
                             <Setter Property="Opacity" Value=".8"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
@@ -194,7 +194,6 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="16,5"/>
         <Setter Property="TextElement.FontWeight" Value="Medium"/>
-        <Setter Property="TextElement.FontSize" Value="14"/>
         <Setter Property="Border.CornerRadius" Value="2"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -242,8 +241,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="16,5"/>
-        <Setter Property="TextElement.FontWeight" Value="SemiBold"/>
-        <Setter Property="TextElement.FontSize" Value="14"/>
+        <Setter Property="TextElement.FontWeight" Value="Medium"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -298,20 +296,12 @@
     
     <Style x:Key="WamlPrimaryButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource WamlFocusVisual}"/>
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="{DynamicResource 500}" Offset="0.3" />
-                    <GradientStop Color="{DynamicResource A400}" Offset="2.0" />
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="{DynamicResource PrimaryBrushRegular}"/>
         <Setter Property="Foreground" Value="{StaticResource ButtonStaticForeground}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="16,5"/>
-        <Setter Property="TextElement.FontWeight" Value="SemiBold"/>
-        <Setter Property="TextElement.FontSize" Value="14"/>
+        <Setter Property="TextElement.FontWeight" Value="Medium"/>     
         <Setter Property="Height" Value="40"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -333,7 +323,7 @@
                     </Border>
                     <ControlTemplate.Triggers>                       
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{DynamicResource PrimaryBrushDark}"/>
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource PrimaryBrushMid}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Neutral.Gray20}"/>

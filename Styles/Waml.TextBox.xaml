@@ -45,7 +45,7 @@
                             <TextBlock Text="{TemplateBinding waml:WamlExtra.Label}"
                                        Padding="1,5,0,5" 
                                        Foreground="{DynamicResource MediumTextBrush}"
-                                       FontWeight="Medium" />
+                                       FontWeight="Regular" />
                             <TextBlock Text="*"
                                        Padding="4,5" 
                                        Foreground="{StaticResource Shared.SharedRed20}"

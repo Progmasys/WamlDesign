@@ -15,6 +15,7 @@
     <Style TargetType="TextBox" BasedOn="{StaticResource WamlTextBoxStyle}"/>
     <Style TargetType="PasswordBox" BasedOn="{StaticResource WamlPasswordBoxStyle}"/>
     <Style TargetType="ToolBar" BasedOn="{StaticResource WamlToolBarStyle}"/>
+    <Style TargetType="ToolTip" BasedOn="{StaticResource WamlToolTipStyle}"/>
     <Style TargetType="ToolBarTray" BasedOn="{StaticResource WamlToolBarTrayStyle}"/>
     <Style TargetType="TreeView" BasedOn="{StaticResource WamlTreeViewStyle}"/>
     <Style TargetType="TreeViewItem" BasedOn="{StaticResource WamlTreeViewItemStyle}"/>

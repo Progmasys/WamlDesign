@@ -17,7 +17,7 @@
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="BorderBrush" Value="{StaticResource Neutral.Gray20}"/>
         <Setter Property="Padding" Value="11"/>
-        <Setter Property="TextElement.FontWeight" Value="SemiBold"/>
+        <Setter Property="TextElement.FontWeight" Value="Medium"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -243,7 +243,7 @@
         <Setter Property="HorizontalGridLinesBrush" Value="{x:Null}"/>
         <Setter Property="VerticalGridLinesBrush" Value="{x:Null}"/>
         <Setter Property="Background" Value="{StaticResource Neutral.White}"/>
-        <Setter Property="Foreground" Value="{StaticResource Neutral.Gray160}"/>
+        <Setter Property="Foreground" Value="{DynamicResource MediumTextBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
@@ -444,8 +444,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Background" Value="{StaticResource Neutral.Gray30}"/>
-                            <Setter Property="TextElement.Foreground" Value="{StaticResource Neutral.Gray190}"/>
-                            <Setter Property="TextElement.FontWeight" Value="SemiBold"/>
+                            <Setter Property="TextElement.FontWeight" Value="Medium"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -474,7 +473,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="11"/>
-        <Setter Property="TextElement.Foreground" Value="{StaticResource Neutral.Gray190}"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource RegularTextBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
